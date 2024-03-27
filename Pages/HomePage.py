@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 from Pages.BasePage import BasePage
 from Pages.LoginPage import LoginPage
+from Pages.ProductPage import ProductPage
 from Pages.RegisterPage import RegisterPage
 from Pages.SearchPage import SearchPage
 
@@ -15,6 +16,8 @@ class HomePage(BasePage):
     my_account_drop_menu_xpath = '//a[@title="My Account"]'
     login_option_link_text = 'Login'
     register_option_link_text = 'Register'
+    macbook_link_text = 'MacBook'
+    cart_xpath = "//a[@title='Shopping Cart']"
 
     def enter_product_into_search_box_field(self,product_name):
         self.type_into_element(product_name,"search_box_field_name",self.search_box_field_name)
@@ -22,6 +25,13 @@ class HomePage(BasePage):
     def click_on_search_button(self):
         self.element_click("search_button_xpath", self.search_button_xpath)
         return SearchPage(self.driver)
+
+    def click_on_product_from_home_page(self):
+        self.element_click("product_link_text",self.macbook_link_text)
+        return ProductPage(self.driver)
+
+    def click_on_cart(self):
+        self.element_click("cart_xpath",self.cart_xpath)
 
     def click_on_my_account_drop_menu(self):
         self.element_click("my_account_drop_menu_xpath",self.my_account_drop_menu_xpath)

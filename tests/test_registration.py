@@ -35,7 +35,7 @@ class TestRegister(BaseTest):
     def test_enter_invalid_email_address(self):
         home_page = HomePage(self.driver)
         register_page = home_page.navigate_to_register_page()
-        register_page.register_an_account("Shiv","Pratap","ShivPratap","1234567890","1234567890","1234567890","yes","select")
+        register_page.register_an_account("Shiv","Pratap","ShivPratap@gmail","1234567890","1234567890","1234567890","yes","select")
         expected_warning_message = "E-Mail Address does not appear to be valid!"
         assert register_page.retrieve_email_warning().__contains__(expected_warning_message)
 
